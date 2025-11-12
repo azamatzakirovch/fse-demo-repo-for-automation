@@ -1,23 +1,26 @@
-name: Workflows for Unit tests
+# .github/workflows/workflow.yml
+name: Unit tests
+
 on:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
   unit-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repo
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-varsion: "24"
+          node-version: '22'   # LTS. Change if you truly need another.
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci            # faster & reproducible in CI (use npm install if no package-lock.json)
 
-      - name: Run test
+      - name: Run tests
         run: npm test
