@@ -8,5 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Echo Assalamu Alaykum Dunya
-        run: echo "Assalamu Alaykum Dunya"
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        users: actions/setup-node@v3
+        with:
+          node-varsion: "24"
+
+      - name: Install dependencies
+        run: npm install
