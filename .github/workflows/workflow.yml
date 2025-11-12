@@ -1,0 +1,12 @@
+name: Workflows for Unit tests
+on:
+  push:
+    branches: [main]
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo Assalamu Alaykum Dunya
+        run: echo "Assalamu Alaykum Dunya"
